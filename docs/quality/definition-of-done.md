@@ -1,4 +1,4 @@
-## 9. Definition of Done
+## Definition of Done
 
 Una historia de usuario se considerará terminada cuando cumpla las condiciones definidas en el **Definition of Done (DoD)**.
 
