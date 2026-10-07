@@ -1,4 +1,4 @@
-## 8. Definition of Ready
+## Definition of Ready
 
 Se definirá un **Definition of Ready (DoR)** para comprobar si una historia de usuario dispone de suficiente información para poder ser incluida en un Sprint.
 
