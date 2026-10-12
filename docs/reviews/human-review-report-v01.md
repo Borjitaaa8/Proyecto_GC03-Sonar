@@ -51,3 +51,28 @@
   - US-002 opera como filtro masivo del catálogo según rango de fechas.
   - US-006 comprueba y muestra el estado específico en la ficha de detalle del vehículo.
   - US-013 actúa exclusivamente como manejador de error/excepción cuando sobreviene un cambio de estado concurrente durante el flujo de reserva.
+
+  ## Decisiones posteriores al RECHECK
+
+### F-06 — Evidencia de pruebas funcionales frente a M-01/M-02
+
+**Decisión:** ACCEPTED_WITH_CHANGES
+
+**Justificación:**  
+El equipo acepta la observación. Las pruebas funcionales deterministas y las
+mediciones de tiempo de respuesta se consideran evidencia técnica complementaria,
+pero no sustituyen la evaluación con participantes definida para M-01 y M-02.
+
+El procedimiento de evaluación con participantes queda definido en
+`specs/product/goals.md`.
+
+### F-07 — Origen del identificador del vehículo
+
+**Decisión:** ACCEPTED
+
+**Justificación:**  
+El equipo decide que el identificador único de cada vehículo será generado
+automáticamente por CityDrive durante el alta.
+
+El personal de AutoRent no introducirá manualmente dicho identificador.
+Esta decisión ya se encuentra reflejada en US-018.
