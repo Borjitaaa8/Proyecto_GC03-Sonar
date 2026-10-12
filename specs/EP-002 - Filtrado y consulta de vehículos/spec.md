@@ -96,3 +96,6 @@ Facilitar que el cliente pueda reducir las opciones disponibles y consultar la i
 - El tiempo de respuesta inferior a 2 segundos se comprobará en el entorno local de pruebas del proyecto.
 - La verificación se realizará mediante pruebas funcionales deterministas utilizando datos sintéticos.
 - No se requieren pruebas de carga o estrés propias de un entorno de producción.
+- Esta historia comprueba y muestra la disponibilidad de un vehículo concreto seleccionado por el usuario.
+- La búsqueda general de vehículos disponibles para un rango de fechas corresponde a US-002.
+- Esta comprobación no sustituye a la revalidación definitiva realizada durante la confirmación de la reserva.

@@ -93,3 +93,7 @@ Garantizar que las reservas registradas sean coherentes con la disponibilidad re
 - No se debe crear una reserva cuando la disponibilidad haya cambiado.
 - La comprobación debe utilizar la información actual del propio sistema.
 - Si dos usuarios intentan confirmar simultáneamente reservas incompatibles, el usuario cuya reserva no pueda registrarse debe recibir este comportamiento de información.
+- Esta historia se aplica exclusivamente cuando la disponibilidad cambia durante el flujo de reserva después de que el vehículo hubiera sido mostrado previamente como disponible.
+- No realiza la búsqueda general de disponibilidad, responsabilidad de US-002.
+- No representa la consulta ordinaria del estado de un vehículo, responsabilidad de US-006.
+- Su responsabilidad es informar y permitir la recuperación del flujo cuando la revalidación final detecta un conflicto.

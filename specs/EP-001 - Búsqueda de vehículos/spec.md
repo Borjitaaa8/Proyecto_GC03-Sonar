@@ -98,3 +98,6 @@ Permitir que el cliente indique las fechas en las que necesita un vehículo y ob
 - Desde el mensaje de falta de disponibilidad, el usuario debe poder volver al formulario de búsqueda y modificar las fechas.
 - La verificación se realizará mediante una prueba funcional determinista con datos sintéticos que produzca una búsqueda sin resultados.
 - La verificación de este flujo servirá como evidencia para M-01 definida en `specs/product/goals.md`.
+- Esta historia realiza la consulta general del catálogo para el rango de fechas seleccionado.
+- La comprobación detallada de disponibilidad de un vehículo concreto corresponde a US-006.
+- Los cambios de disponibilidad producidos durante el proceso de reserva se gestionan mediante US-013.
