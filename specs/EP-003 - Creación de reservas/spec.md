@@ -17,7 +17,7 @@ Permitir que el cliente complete de forma autónoma el proceso principal de City
 
 ### US-007 — Seleccionar un vehículo disponible
 
-> Como cliente, quiero seleccionar uno de los vehículos disponibles para iniciar el proceso de reserva.
+> *Como cliente, quiero seleccionar uno de los vehículos disponibles para iniciar el proceso de reserva.*
 
 - **Priority:** Must
 - **Estimate:** 4 h-p
@@ -41,7 +41,7 @@ Permitir que el cliente complete de forma autónoma el proceso principal de City
 
 ### US-008 — Introducir los datos necesarios para la reserva
 
-> Como cliente, quiero introducir los datos necesarios para que AutoRent pueda registrar correctamente mi reserva.
+> *Como cliente, quiero introducir los datos necesarios para que AutoRent pueda registrar correctamente mi reserva.*
 
 - **Priority:** Must
 - **Estimate:** 6 h-p
@@ -51,23 +51,26 @@ Permitir que el cliente complete de forma autónoma el proceso principal de City
 
 #### Acceptance criteria
 
-- **US-008-AC-01:** El usuario puede introducir los campos definidos como obligatorios para la reserva.
-- **US-008-AC-02:** El sistema valida que los campos obligatorios estén informados.
-- **US-008-AC-03:** Si falta algún dato obligatorio, el sistema informa al usuario.
-- **US-008-AC-04:** Los datos válidos pueden utilizarse posteriormente para confirmar la reserva.
+- **US-008-AC-01:** El usuario puede introducir como datos obligatorios su nombre y apellidos ficticios y un correo electrónico ficticio.
+- **US-008-AC-02:** El sistema valida que el nombre y apellidos y el correo electrónico estén informados.
+- **US-008-AC-03:** Si falta alguno de los datos obligatorios, el sistema informa al usuario y no permite continuar con la confirmación.
+- **US-008-AC-04:** Los datos válidos quedan asociados al vehículo y al rango de fechas seleccionados previamente y pueden utilizarse posteriormente para confirmar la reserva.
 
 #### Verification and constraints
 
+- Los campos de reserva siguen el modelo mínimo de datos sintéticos definido en `specs/product/goals.md`.
+- El cliente introduce únicamente el nombre y apellidos y el correo electrónico; el vehículo y las fechas proceden de los pasos anteriores del proceso.
+- La referencia se genera posteriormente en US-010 y el estado de la reserva se establece como resultado del proceso de confirmación.
 - Se utilizarán únicamente datos ficticios durante el desarrollo y las pruebas.
 - No se almacenarán datos bancarios ni documentación real.
-- Los mensajes de validación deben ser claros.
-- Los campos deberán limitarse a los necesarios para el escenario académico.
+- Los mensajes de validación deben indicar qué dato obligatorio falta.
+- Los campos se limitan a los necesarios para el escenario académico.
 
 ---
 
 ### US-009 — Confirmar una reserva
 
-> Como cliente, quiero confirmar los datos de mi reserva antes de finalizarla para comprobar que el vehículo y las fechas son correctos.
+> *Como cliente, quiero confirmar los datos de mi reserva antes de finalizarla para comprobar que el vehículo y las fechas son correctos.*
 
 - **Priority:** Must
 - **Estimate:** 7 h-p
@@ -96,7 +99,7 @@ Permitir que el cliente complete de forma autónoma el proceso principal de City
 
 ### US-010 — Generar una referencia de reserva
 
-> Como cliente, quiero obtener una referencia única al finalizar la reserva para poder identificarla y consultarla posteriormente.
+> *Como cliente, quiero obtener una referencia única al finalizar la reserva para poder identificarla y consultarla posteriormente.*
 
 - **Priority:** Must
 - **Estimate:** 3 h-p

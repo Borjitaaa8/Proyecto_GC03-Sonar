@@ -17,7 +17,7 @@ Facilitar que el cliente pueda reducir las opciones disponibles y consultar la i
 
 ### US-004 — Filtrar los vehículos por tipo
 
-> Como cliente, quiero filtrar los vehículos disponibles por tipo para poder encontrar más fácilmente un coche o una furgoneta según mis necesidades.
+> *Como cliente, quiero filtrar los vehículos disponibles por tipo para poder encontrar más fácilmente un coche o una furgoneta según mis necesidades.*
 
 - **Priority:** Must
 - **Estimate:** 4 h-p
@@ -43,7 +43,7 @@ Facilitar que el cliente pueda reducir las opciones disponibles y consultar la i
 
 ### US-005 — Consultar las características de un vehículo
 
-> Como cliente, quiero consultar las características principales de un vehículo para poder valorar si se adapta a mis necesidades.
+> *Como cliente, quiero consultar las características principales de un vehículo para poder valorar si se adapta a mis necesidades.*
 
 - **Priority:** Should
 - **Estimate:** 5 h-p
@@ -53,12 +53,13 @@ Facilitar que el cliente pueda reducir las opciones disponibles y consultar la i
 
 #### Acceptance criteria
 
-- **US-005-AC-01:** El usuario puede acceder a la información principal de un vehículo.
-- **US-005-AC-02:** Se muestra al menos el tipo de vehículo y la información básica definida en el catálogo.
+- **US-005-AC-01:** El usuario puede acceder a la información principal del vehículo seleccionado.
+- **US-005-AC-02:** Se muestran la marca, el modelo, la categoría, el número de plazas, la capacidad de maletero o carga, el tipo de transmisión y el estado operativo del vehículo.
 - **US-005-AC-03:** La información mostrada corresponde al vehículo seleccionado.
 
 #### Verification and constraints
 
+- Los campos del vehículo utilizados en esta historia siguen el modelo mínimo de datos sintéticos definido en `specs/product/goals.md`.
 - Solo se utilizará información ficticia del catálogo de AutoRent.
 - La información debe mostrarse de forma clara y legible.
 - No se incluirán datos mecánicos o técnicos ajenos al alcance definido.
@@ -67,7 +68,7 @@ Facilitar que el cliente pueda reducir las opciones disponibles y consultar la i
 
 ### US-006 — Visualizar la disponibilidad del vehículo seleccionado
 
-> Como cliente, quiero comprobar que el vehículo seleccionado está disponible para las fechas indicadas antes de iniciar la reserva.
+> *Como cliente, quiero comprobar que el vehículo seleccionado está disponible para las fechas indicadas antes de iniciar la reserva.*
 
 - **Priority:** Must
 - **Estimate:** 4 h-p

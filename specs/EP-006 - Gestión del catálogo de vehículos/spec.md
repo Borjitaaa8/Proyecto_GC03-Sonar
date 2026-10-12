@@ -17,7 +17,7 @@ Proporcionar al personal de AutoRent las funciones mínimas necesarias para mant
 
 ### US-018 — Dar de alta un vehículo
 
-> Como personal de AutoRent, quiero registrar un nuevo vehículo en el sistema para que pueda formar parte del catálogo disponible.
+> *Como personal de AutoRent, quiero registrar un nuevo vehículo en el sistema para que pueda formar parte del catálogo disponible.*
 
 - **Priority:** Must
 - **Estimate:** 6 h-p
@@ -27,13 +27,14 @@ Proporcionar al personal de AutoRent las funciones mínimas necesarias para mant
 
 #### Acceptance criteria
 
-- **US-018-AC-01:** El personal puede introducir los datos básicos definidos para un vehículo.
-- **US-018-AC-02:** El sistema valida los campos obligatorios.
+- **US-018-AC-01:** El personal puede introducir la marca, modelo, categoría, número de plazas, capacidad de maletero o carga, tipo de transmisión y estado operativo del vehículo.
+- **US-018-AC-02:** El sistema valida que los campos mínimos del vehículo estén informados y que el vehículo disponga de un identificador único.
 - **US-018-AC-03:** Si los datos son válidos, el vehículo queda registrado.
 - **US-018-AC-04:** El vehículo registrado puede utilizarse posteriormente en búsquedas y reservas.
 
 #### Verification and constraints
 
+- Los datos del vehículo siguen el modelo mínimo de datos sintéticos definido en `specs/product/goals.md`.
 - Los vehículos utilizados serán ficticios.
 - No se almacenará información de localización GPS.
 - No se incluirán datos de mantenimiento mecánico.
@@ -43,7 +44,7 @@ Proporcionar al personal de AutoRent las funciones mínimas necesarias para mant
 
 ### US-019 — Modificar la información de un vehículo
 
-> Como personal de AutoRent, quiero modificar los datos de un vehículo para mantener actualizada su información.
+> *Como personal de AutoRent, quiero modificar los datos de un vehículo para mantener actualizada su información.*
 
 - **Priority:** Should
 - **Estimate:** 5 h-p
@@ -54,12 +55,15 @@ Proporcionar al personal de AutoRent las funciones mínimas necesarias para mant
 #### Acceptance criteria
 
 - **US-019-AC-01:** El personal puede seleccionar un vehículo existente.
-- **US-019-AC-02:** Puede modificar los campos permitidos.
+- **US-019-AC-02:** Puede modificar la marca, modelo, categoría, número de plazas, capacidad de maletero o carga y tipo de transmisión del vehículo.
 - **US-019-AC-03:** Los cambios válidos quedan almacenados.
 - **US-019-AC-04:** Las consultas posteriores muestran la información actualizada.
 
 #### Verification and constraints
 
+- Los campos modificables siguen el modelo mínimo de datos sintéticos definido en `specs/product/goals.md`.
+- El identificador del vehículo no se modifica mediante esta historia.
+- El cambio del estado operativo se realiza mediante US-020.
 - Solo se podrán modificar vehículos existentes.
 - Las modificaciones deben respetar las validaciones definidas para el catálogo.
 - No se incluye información mecánica ni GPS.
@@ -68,7 +72,7 @@ Proporcionar al personal de AutoRent las funciones mínimas necesarias para mant
 
 ### US-020 — Modificar el estado de disponibilidad
 
-> Como personal de AutoRent, quiero marcar un vehículo como disponible o no disponible para evitar que se ofrezcan vehículos que temporalmente no pueden alquilarse.
+> *Como personal de AutoRent, quiero marcar un vehículo como disponible o no disponible para evitar que se ofrezcan vehículos que temporalmente no pueden alquilarse.*
 
 - **Priority:** Should
 - **Estimate:** 4 h-p
@@ -93,7 +97,7 @@ Proporcionar al personal de AutoRent las funciones mínimas necesarias para mant
 
 ### US-021 — Consultar el catálogo completo
 
-> Como personal de AutoRent, quiero consultar el catálogo completo de vehículos para revisar la información y el estado actual de la flota.
+> *Como personal de AutoRent, quiero consultar el catálogo completo de vehículos para revisar la información y el estado actual de la flota.*
 
 - **Priority:** Should
 - **Estimate:** 5 h-p
@@ -104,12 +108,13 @@ Proporcionar al personal de AutoRent las funciones mínimas necesarias para mant
 #### Acceptance criteria
 
 - **US-021-AC-01:** El personal puede visualizar los vehículos registrados.
-- **US-021-AC-02:** Cada elemento muestra la información básica definida para el catálogo.
-- **US-021-AC-03:** Se muestra el estado actual de disponibilidad de cada vehículo.
-- **US-021-AC-04:** La información coincide con los datos almacenados.
+- **US-021-AC-02:** Cada vehículo muestra su identificador, marca, modelo, categoría, número de plazas, capacidad de maletero o carga y tipo de transmisión.
+- **US-021-AC-03:** Se muestra el estado operativo actual de cada vehículo.
+- **US-021-AC-04:** La información mostrada coincide con los datos almacenados.
 
 #### Verification and constraints
 
+- La información mostrada sigue el modelo mínimo de datos sintéticos definido en `specs/product/goals.md`.
 - La consulta está orientada al personal de AutoRent.
 - Solo se utilizarán datos ficticios.
 - No se incluye información GPS, mecánica ni procedente de sistemas externos.
