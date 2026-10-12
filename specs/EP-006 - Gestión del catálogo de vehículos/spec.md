@@ -31,18 +31,21 @@ Proporcionar al personal de AutoRent las funciones mínimas necesarias para mant
 
 - **US-018-AC-01:** El personal puede acceder desde la vista administrativa a la función de alta de vehículos.
 - **US-018-AC-02:** El personal puede introducir la marca, modelo, categoría, número de plazas, capacidad de maletero o carga, tipo de transmisión y estado operativo del vehículo.
-- **US-018-AC-03:** El sistema valida que los campos mínimos del vehículo estén informados y que el vehículo disponga de un identificador único.
-- **US-018-AC-04:** Si falta algún campo obligatorio o el identificador ya existe, el sistema informa del problema y no registra el vehículo.
-- **US-018-AC-05:** Si los datos son válidos, el vehículo queda registrado.
+- **US-018-AC-03:** El sistema valida que los campos mínimos del vehículo estén informados.
+- **US-018-AC-04:** Si falta algún campo obligatorio, el sistema informa del problema y no registra el vehículo.
+- **US-018-AC-05:** Si los datos son válidos, el sistema genera automáticamente un identificador único para el nuevo vehículo y lo registra.
 - **US-018-AC-06:** El vehículo registrado puede utilizarse posteriormente en búsquedas y reservas.
 
 #### Verification and constraints
 
 - Los datos del vehículo siguen el modelo mínimo de datos sintéticos definido en `specs/product/goals.md`.
+- El identificador del vehículo es generado automáticamente por CityDrive y no es introducido manualmente por el personal.
+- Cada vehículo registrado debe disponer de un identificador único.
+- Una vez asignado, el identificador no se modifica mediante las funciones de mantenimiento del catálogo.
 - La función forma parte de la vista administrativa destinada al personal de AutoRent.
 - En el MVP no se implementará un sistema complejo o externo de autenticación y gestión de identidades.
 - Los vehículos utilizados serán ficticios.
-- Se verificarán mediante pruebas funcionales deterministas los casos de alta válida, campo obligatorio ausente e identificador duplicado.
+- Se verificarán mediante pruebas funcionales deterministas los casos de alta válida y campo obligatorio ausente.
 - Los mensajes de validación deberán identificar el motivo por el que el vehículo no puede registrarse.
 - No se almacenará información de localización GPS.
 - No se incluirán datos de mantenimiento mecánico.

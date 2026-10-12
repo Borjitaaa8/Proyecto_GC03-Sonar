@@ -93,12 +93,22 @@ El proyecto debe respetar las siguientes condiciones:
 
 ## Criterios transversales de verificación
 
+### Verificación técnica
+
 Para las historias relacionadas con la consulta de información y la confirmación de reservas se aplicarán los siguientes criterios durante la validación del MVP:
 
 - Las operaciones de consulta y confirmación deberán ofrecer una respuesta observable en la interfaz en menos de 2 segundos en el entorno local de pruebas del proyecto.
-- La verificación se realizará mediante pruebas funcionales deterministas utilizando datos sintéticos.
+- La verificación funcional se realizará mediante pruebas deterministas utilizando datos sintéticos.
 - No se requieren pruebas de carga, estrés o rendimiento propias de un entorno de producción industrial.
-- Los mensajes mostrados al usuario deberán permitir identificar de forma clara el resultado de la operación o el motivo por el que no puede completarse.
+- Los mensajes mostrados al usuario deberán permitir identificar el resultado de la operación o el motivo por el que no puede completarse.
+
+### Evidencia de las métricas M-01 y M-02
+
+Las pruebas funcionales y las mediciones de tiempo de respuesta anteriores verifican el comportamiento técnico del sistema, pero no constituyen por sí solas evidencia suficiente para las métricas M-01 y M-02.
+
+- **M-01** se verificará mediante la realización del escenario completo de reserva con cinco participantes. La métrica se considerará cumplida si al menos cuatro de los cinco completan el escenario en menos de diez minutos y sin ayuda.
+- **M-02** se verificará con esos participantes comprobando, una vez realizado el escenario, que pueden identificar correctamente el vehículo reservado y las fechas de la reserva. La métrica se considerará cumplida si al menos cuatro de los cinco responden correctamente.
+- Los resultados de estas evaluaciones se conservarán como evidencia separada de las pruebas funcionales deterministas y de las mediciones de rendimiento.
 
 ## Trazabilidad
 

@@ -83,17 +83,18 @@ Garantizar que las reservas registradas sean coherentes con la disponibilidad re
 #### Acceptance criteria
 
 - **US-013-AC-01:** Si la comprobación final de disponibilidad detecta que el vehículo ya no está disponible para las fechas seleccionadas, la reserva no se confirma.
-- **US-013-AC-02:** El usuario recibe un mensaje claro indicando que el vehículo ha dejado de estar disponible para el periodo seleccionado.
-- **US-013-AC-03:** El usuario puede volver a la búsqueda para seleccionar otro vehículo.
-- **US-013-AC-04:** El rechazo de la reserva no modifica ni elimina la reserva que provocó el conflicto.
+- **US-013-AC-02:** El usuario recibe un mensaje indicando que el vehículo ha dejado de estar disponible para el periodo seleccionado.
+- **US-013-AC-03:** El usuario puede volver a la selección de fechas y realizar una nueva búsqueda.
+- **US-013-AC-04:** Si el usuario había aplicado filtros en la búsqueda anterior, estos se conservan al volver al proceso de búsqueda.
+- **US-013-AC-05:** El rechazo de la reserva no modifica ni elimina la reserva que provocó el conflicto.
 
 #### Verification and constraints
 
-- El mensaje debe ser comprensible y no ambiguo.
+- Esta historia se aplica exclusivamente cuando la disponibilidad cambia durante el flujo de reserva después de que el vehículo hubiera sido mostrado previamente como disponible.
 - No se debe crear una reserva cuando la disponibilidad haya cambiado.
 - La comprobación debe utilizar la información actual del propio sistema.
 - Si dos usuarios intentan confirmar simultáneamente reservas incompatibles, el usuario cuya reserva no pueda registrarse debe recibir este comportamiento de información.
-- Esta historia se aplica exclusivamente cuando la disponibilidad cambia durante el flujo de reserva después de que el vehículo hubiera sido mostrado previamente como disponible.
-- No realiza la búsqueda general de disponibilidad, responsabilidad de US-002.
-- No representa la consulta ordinaria del estado de un vehículo, responsabilidad de US-006.
-- Su responsabilidad es informar y permitir la recuperación del flujo cuando la revalidación final detecta un conflicto.
+- Al regresar a la búsqueda se mantiene el contexto de filtrado utilizado previamente, cuando exista.
+- La búsqueda general de vehículos disponibles corresponde a US-002.
+- La consulta ordinaria de disponibilidad de un vehículo concreto corresponde a US-006.
+- La responsabilidad de esta historia es informar y permitir recuperar el flujo cuando la revalidación definitiva detecta un conflicto.

@@ -30,8 +30,9 @@ Permitir que el cliente indique las fechas en las que necesita un vehículo y ob
 - **US-001-AC-01:** El usuario puede introducir una fecha de inicio.
 - **US-001-AC-02:** El usuario puede introducir una fecha de fin.
 - **US-001-AC-03:** La fecha de fin no puede ser anterior a la fecha de inicio.
-- **US-001-AC-04:** El sistema informa de forma clara si las fechas introducidas no son válidas.
+- **US-001-AC-04:** Si las fechas introducidas no son válidas, el sistema indica qué condición no se cumple.
 - **US-001-AC-05:** Si ambas fechas son válidas, el usuario puede continuar con la búsqueda.
+- **US-001-AC-06:** Los campos de fecha de inicio y fecha de fin aparecen identificados mediante etiquetas diferenciadas.
 
 #### Verification and constraints
 
@@ -39,8 +40,8 @@ Permitir que el cliente indique las fechas en las que necesita un vehículo y ob
 - La fecha final debe ser igual o posterior a la fecha inicial.
 - Las fechas deben utilizar un formato válido y coherente.
 - No se utilizarán datos reales de clientes.
-- La validación debe proporcionar mensajes comprensibles.
-- El proceso debe ser sencillo y accesible.
+- Los mensajes de validación deben permitir identificar el error que impide continuar.
+- La verificación se realizará mediante pruebas funcionales deterministas con fechas válidas e inválidas.
 
 ---
 
@@ -67,11 +68,12 @@ Permitir que el cliente indique las fechas en las que necesita un vehículo y ob
 - Un vehículo solo se considera disponible si lo está durante todo el periodo solicitado.
 - Las reservas existentes deben comprobarse antes de mostrar los resultados.
 - La información procederá únicamente del catálogo ficticio de AutoRent.
-- Los resultados deben mostrarse de forma comprensible.
 - El tiempo de respuesta inferior a 2 segundos se comprobará en el entorno local de pruebas del proyecto.
 - La verificación se realizará mediante pruebas funcionales deterministas utilizando datos sintéticos.
 - No se requieren pruebas de carga o estrés propias de un entorno de producción.
-- La verificación de este flujo servirá como evidencia para las métricas M-01 y M-02 definidas en `specs/product/goals.md`.
+- Esta historia realiza la consulta general del catálogo para el rango de fechas seleccionado.
+- La comprobación detallada de disponibilidad de un vehículo concreto corresponde a US-006.
+- Los cambios de disponibilidad producidos durante el proceso de reserva se gestionan mediante US-013.
 
 ---
 
@@ -97,7 +99,3 @@ Permitir que el cliente indique las fechas en las que necesita un vehículo y ob
 - No debe mostrarse información de vehículos no disponibles como alternativa válida.
 - Desde el mensaje de falta de disponibilidad, el usuario debe poder volver al formulario de búsqueda y modificar las fechas.
 - La verificación se realizará mediante una prueba funcional determinista con datos sintéticos que produzca una búsqueda sin resultados.
-- La verificación de este flujo servirá como evidencia para M-01 definida en `specs/product/goals.md`.
-- Esta historia realiza la consulta general del catálogo para el rango de fechas seleccionado.
-- La comprobación detallada de disponibilidad de un vehículo concreto corresponde a US-006.
-- Los cambios de disponibilidad producidos durante el proceso de reserva se gestionan mediante US-013.
