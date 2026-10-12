@@ -83,15 +83,17 @@ Permitir que el cliente complete de forma autónoma el proceso principal de City
 - **US-009-AC-01:** Se muestran el vehículo seleccionado y las fechas de la reserva.
 - **US-009-AC-02:** Se muestran los datos necesarios introducidos por el cliente.
 - **US-009-AC-03:** El usuario puede confirmar la operación.
-- **US-009-AC-04:** Antes de registrar la reserva se comprueba nuevamente la disponibilidad.
-- **US-009-AC-05:** No existe ningún solapamiento con otra reserva activa.
-- **US-009-AC-06:** Si la operación finaliza correctamente, la reserva queda registrada.
+- **US-009-AC-04:** En el instante de la confirmación definitiva, el sistema vuelve a comprobar la disponibilidad del vehículo para el rango de fechas seleccionado.
+- **US-009-AC-05:** Solo puede confirmarse una reserva para un mismo vehículo y un rango de fechas incompatible.
+- **US-009-AC-06:** Si la revalidación es correcta, la reserva queda registrada y el vehículo deja de estar disponible para rangos incompatibles.
+- **US-009-AC-07:** Si durante la confirmación el vehículo ha dejado de estar disponible, la reserva no se registra y se aplica el comportamiento definido en US-013.
 
 #### Verification and constraints
 
 - No puede registrarse una reserva sin vehículo, fechas y datos obligatorios.
-- La disponibilidad debe comprobarse inmediatamente antes de confirmar.
-- No puede confirmarse una reserva cuando exista un solapamiento.
+- La comprobación final de disponibilidad y el registro de la reserva deben tratarse como una única operación desde el punto de vista funcional, evitando que dos confirmaciones incompatibles queden registradas.
+- Si dos solicitudes intentan confirmar simultáneamente el mismo vehículo para fechas incompatibles, solo una podrá finalizar correctamente.
+- La segunda solicitud deberá ser rechazada al detectar que el vehículo ya no está disponible.
 - No se realizará ningún pago real.
 - No se generarán contratos reales.
 
