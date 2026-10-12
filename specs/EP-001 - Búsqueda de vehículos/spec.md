@@ -17,7 +17,7 @@ Permitir que el cliente indique las fechas en las que necesita un vehículo y ob
 
 ### US-001 — Introducir un rango de fechas para la búsqueda
 
-> Como cliente, quiero indicar una fecha de inicio y una fecha de fin para poder buscar vehículos disponibles durante ese periodo.
+> *Como cliente, quiero indicar una fecha de inicio y una fecha de fin para poder buscar vehículos disponibles durante ese periodo.*
 
 - **Priority:** Must
 - **Estimate:** 5 h-p
@@ -46,7 +46,7 @@ Permitir que el cliente indique las fechas en las que necesita un vehículo y ob
 
 ### US-002 — Consultar los vehículos disponibles
 
-> Como cliente, quiero consultar los vehículos disponibles para las fechas seleccionadas para poder elegir una opción que pueda reservar.
+> *Como cliente, quiero consultar los vehículos disponibles para las fechas seleccionadas para poder elegir una opción que pueda reservar.*
 
 - **Priority:** Must
 - **Estimate:** 7 h-p
@@ -59,7 +59,8 @@ Permitir que el cliente indique las fechas en las que necesita un vehículo y ob
 - **US-002-AC-01:** Solo se muestran vehículos disponibles durante todo el rango seleccionado.
 - **US-002-AC-02:** Los vehículos con reservas incompatibles no se muestran como disponibles.
 - **US-002-AC-03:** Los vehículos marcados manualmente como no disponibles tampoco aparecen.
-- **US-002-AC-04:** Si no existen resultados, se muestra un mensaje claro al usuario.
+- **US-002-AC-04:** Si no existen resultados, se muestra un mensaje indicando que no existen vehículos disponibles para el rango seleccionado.
+- **US-002-AC-05:** La consulta ofrece una respuesta observable en la interfaz en menos de 2 segundos en el entorno local de pruebas.
 
 #### Verification and constraints
 
@@ -67,13 +68,16 @@ Permitir que el cliente indique las fechas en las que necesita un vehículo y ob
 - Las reservas existentes deben comprobarse antes de mostrar los resultados.
 - La información procederá únicamente del catálogo ficticio de AutoRent.
 - Los resultados deben mostrarse de forma comprensible.
-- La consulta debe ofrecer un tiempo de respuesta adecuado para el escenario de demostración.
+- El tiempo de respuesta inferior a 2 segundos se comprobará en el entorno local de pruebas del proyecto.
+- La verificación se realizará mediante pruebas funcionales deterministas utilizando datos sintéticos.
+- No se requieren pruebas de carga o estrés propias de un entorno de producción.
+- La verificación de este flujo servirá como evidencia para las métricas M-01 y M-02 definidas en `specs/product/goals.md`.
 
 ---
 
 ### US-003 — Informar cuando no existan vehículos disponibles
 
-> Como cliente, quiero recibir un mensaje claro cuando no existan vehículos disponibles para las fechas indicadas para saber que debo modificar mi búsqueda.
+> *Como cliente, quiero recibir un mensaje claro cuando no existan vehículos disponibles para las fechas indicadas para saber que debo modificar mi búsqueda.*
 
 - **Priority:** Should
 - **Estimate:** 3 h-p
@@ -89,6 +93,8 @@ Permitir que el cliente indique las fechas en las que necesita un vehículo y ob
 
 #### Verification and constraints
 
-- El mensaje debe ser visible y comprensible.
+- El mensaje debe ser visible e indicar explícitamente que no existen vehículos disponibles para las fechas seleccionadas.
 - No debe mostrarse información de vehículos no disponibles como alternativa válida.
-- El usuario debe poder regresar fácilmente al formulario de búsqueda.
+- Desde el mensaje de falta de disponibilidad, el usuario debe poder volver al formulario de búsqueda y modificar las fechas.
+- La verificación se realizará mediante una prueba funcional determinista con datos sintéticos que produzca una búsqueda sin resultados.
+- La verificación de este flujo servirá como evidencia para M-01 definida en `specs/product/goals.md`.

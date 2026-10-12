@@ -53,7 +53,7 @@ Permitir que el cliente complete de forma autónoma el proceso principal de City
 
 - **US-008-AC-01:** El usuario puede introducir como datos obligatorios su nombre y apellidos ficticios y un correo electrónico ficticio.
 - **US-008-AC-02:** El sistema valida que el nombre y apellidos y el correo electrónico estén informados.
-- **US-008-AC-03:** Si falta alguno de los datos obligatorios, el sistema informa al usuario y no permite continuar con la confirmación.
+- **US-008-AC-03:** Si falta alguno de los datos obligatorios, el sistema informa al usuario indicando qué campo falta y no permite continuar con la confirmación.
 - **US-008-AC-04:** Los datos válidos quedan asociados al vehículo y al rango de fechas seleccionados previamente y pueden utilizarse posteriormente para confirmar la reserva.
 
 #### Verification and constraints
@@ -63,7 +63,8 @@ Permitir que el cliente complete de forma autónoma el proceso principal de City
 - La referencia se genera posteriormente en US-010 y el estado de la reserva se establece como resultado del proceso de confirmación.
 - Se utilizarán únicamente datos ficticios durante el desarrollo y las pruebas.
 - No se almacenarán datos bancarios ni documentación real.
-- Los mensajes de validación deben indicar qué dato obligatorio falta.
+- La validación se comprobará mediante pruebas funcionales deterministas en las que se omita cada uno de los campos obligatorios.
+- Los mensajes de validación deben identificar el dato obligatorio que falta.
 - Los campos se limitan a los necesarios para el escenario académico.
 
 ---
@@ -87,6 +88,7 @@ Permitir que el cliente complete de forma autónoma el proceso principal de City
 - **US-009-AC-05:** Solo puede confirmarse una reserva para un mismo vehículo y un rango de fechas incompatible.
 - **US-009-AC-06:** Si la revalidación es correcta, la reserva queda registrada y el vehículo deja de estar disponible para rangos incompatibles.
 - **US-009-AC-07:** Si durante la confirmación el vehículo ha dejado de estar disponible, la reserva no se registra y se aplica el comportamiento definido en US-013.
+- **US-009-AC-08:** La confirmación ofrece un resultado observable en la interfaz en menos de 2 segundos en el entorno local de pruebas.
 
 #### Verification and constraints
 
@@ -94,6 +96,10 @@ Permitir que el cliente complete de forma autónoma el proceso principal de City
 - La comprobación final de disponibilidad y el registro de la reserva deben tratarse como una única operación desde el punto de vista funcional, evitando que dos confirmaciones incompatibles queden registradas.
 - Si dos solicitudes intentan confirmar simultáneamente el mismo vehículo para fechas incompatibles, solo una podrá finalizar correctamente.
 - La segunda solicitud deberá ser rechazada al detectar que el vehículo ya no está disponible.
+- El tiempo de respuesta inferior a 2 segundos se comprobará en el entorno local de pruebas del proyecto.
+- La verificación se realizará mediante pruebas funcionales deterministas utilizando datos sintéticos.
+- No se requieren pruebas de carga o estrés propias de un entorno de producción.
+- La verificación del flujo de confirmación servirá como evidencia para las métricas M-01 y M-02 definidas en `specs/product/goals.md`.
 - No se realizará ningún pago real.
 - No se generarán contratos reales.
 

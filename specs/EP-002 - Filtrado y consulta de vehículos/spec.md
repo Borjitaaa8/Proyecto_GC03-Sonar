@@ -31,13 +31,14 @@ Facilitar que el cliente pueda reducir las opciones disponibles y consultar la i
 - **US-004-AC-02:** El usuario puede seleccionar el tipo furgoneta.
 - **US-004-AC-03:** Los resultados muestran únicamente vehículos del tipo seleccionado.
 - **US-004-AC-04:** El usuario puede eliminar el filtro y volver a ver todos los vehículos disponibles.
+- **US-004-AC-05:** Si no existen vehículos del tipo seleccionado, se muestra un mensaje indicando que no hay resultados para ese filtro.
 
 #### Verification and constraints
 
 - El filtro se aplica únicamente sobre los resultados de vehículos disponibles.
 - En esta versión solo se contemplan coches y furgonetas.
-- El filtro debe ser fácil de localizar y utilizar.
-- Si no existen resultados del tipo seleccionado, se debe mostrar un mensaje claro.
+- El control de filtrado debe estar disponible en la vista de resultados y permitir aplicar o eliminar el filtro sin volver a introducir las fechas.
+- La verificación se realizará mediante pruebas funcionales deterministas utilizando datos sintéticos.
 
 ---
 
@@ -56,13 +57,17 @@ Facilitar que el cliente pueda reducir las opciones disponibles y consultar la i
 - **US-005-AC-01:** El usuario puede acceder a la información principal del vehículo seleccionado.
 - **US-005-AC-02:** Se muestran la marca, el modelo, la categoría, el número de plazas, la capacidad de maletero o carga, el tipo de transmisión y el estado operativo del vehículo.
 - **US-005-AC-03:** La información mostrada corresponde al vehículo seleccionado.
+- **US-005-AC-04:** Los campos mostrados aparecen identificados de forma que el usuario puede asociar cada valor con su característica.
+- **US-005-AC-05:** La consulta ofrece una respuesta observable en la interfaz en menos de 2 segundos en el entorno local de pruebas.
 
 #### Verification and constraints
 
 - Los campos del vehículo utilizados en esta historia siguen el modelo mínimo de datos sintéticos definido en `specs/product/goals.md`.
 - Solo se utilizará información ficticia del catálogo de AutoRent.
-- La información debe mostrarse de forma clara y legible.
 - No se incluirán datos mecánicos o técnicos ajenos al alcance definido.
+- El tiempo de respuesta inferior a 2 segundos se comprobará en el entorno local de pruebas del proyecto.
+- La verificación se realizará mediante pruebas funcionales deterministas utilizando datos sintéticos.
+- No se requieren pruebas de carga o estrés propias de un entorno de producción.
 
 ---
 
@@ -81,9 +86,13 @@ Facilitar que el cliente pueda reducir las opciones disponibles y consultar la i
 - **US-006-AC-01:** El sistema indica si el vehículo está disponible para el rango seleccionado.
 - **US-006-AC-02:** Un vehículo con una reserva incompatible no se muestra como disponible.
 - **US-006-AC-03:** Un vehículo marcado manualmente como no disponible tampoco se considera disponible.
+- **US-006-AC-04:** La consulta de disponibilidad ofrece una respuesta observable en la interfaz en menos de 2 segundos en el entorno local de pruebas.
 
 #### Verification and constraints
 
 - La disponibilidad debe calcularse usando las reservas almacenadas y el estado del vehículo.
 - La información mostrada debe ser coherente con los resultados de búsqueda.
 - No se utilizarán servicios externos para determinar la disponibilidad.
+- El tiempo de respuesta inferior a 2 segundos se comprobará en el entorno local de pruebas del proyecto.
+- La verificación se realizará mediante pruebas funcionales deterministas utilizando datos sintéticos.
+- No se requieren pruebas de carga o estrés propias de un entorno de producción.

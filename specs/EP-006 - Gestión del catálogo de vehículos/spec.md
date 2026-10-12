@@ -29,16 +29,19 @@ Proporcionar al personal de AutoRent las funciones mínimas necesarias para mant
 
 - **US-018-AC-01:** El personal puede introducir la marca, modelo, categoría, número de plazas, capacidad de maletero o carga, tipo de transmisión y estado operativo del vehículo.
 - **US-018-AC-02:** El sistema valida que los campos mínimos del vehículo estén informados y que el vehículo disponga de un identificador único.
-- **US-018-AC-03:** Si los datos son válidos, el vehículo queda registrado.
-- **US-018-AC-04:** El vehículo registrado puede utilizarse posteriormente en búsquedas y reservas.
+- **US-018-AC-03:** Si falta algún campo obligatorio o el identificador ya existe, el sistema informa del problema y no registra el vehículo.
+- **US-018-AC-04:** Si los datos son válidos, el vehículo queda registrado.
+- **US-018-AC-05:** El vehículo registrado puede utilizarse posteriormente en búsquedas y reservas.
 
 #### Verification and constraints
 
 - Los datos del vehículo siguen el modelo mínimo de datos sintéticos definido en `specs/product/goals.md`.
 - Los vehículos utilizados serán ficticios.
+- Se verificarán mediante pruebas funcionales deterministas los casos de alta válida, campo obligatorio ausente e identificador duplicado.
+- Los mensajes de validación deberán identificar el motivo por el que el vehículo no puede registrarse.
 - No se almacenará información de localización GPS.
 - No se incluirán datos de mantenimiento mecánico.
-- La información debe persistir correctamente.
+- La información registrada debe estar disponible en consultas posteriores.
 
 ---
 
@@ -56,8 +59,9 @@ Proporcionar al personal de AutoRent las funciones mínimas necesarias para mant
 
 - **US-019-AC-01:** El personal puede seleccionar un vehículo existente.
 - **US-019-AC-02:** Puede modificar la marca, modelo, categoría, número de plazas, capacidad de maletero o carga y tipo de transmisión del vehículo.
-- **US-019-AC-03:** Los cambios válidos quedan almacenados.
-- **US-019-AC-04:** Las consultas posteriores muestran la información actualizada.
+- **US-019-AC-03:** Si los datos modificados son válidos, los cambios quedan almacenados.
+- **US-019-AC-04:** Si los datos modificados no son válidos, el sistema informa del problema y mantiene los valores anteriores.
+- **US-019-AC-05:** Las consultas posteriores muestran la información actualizada.
 
 #### Verification and constraints
 
@@ -66,6 +70,7 @@ Proporcionar al personal de AutoRent las funciones mínimas necesarias para mant
 - El cambio del estado operativo se realiza mediante US-020.
 - Solo se podrán modificar vehículos existentes.
 - Las modificaciones deben respetar las validaciones definidas para el catálogo.
+- Se verificarán mediante pruebas funcionales deterministas una modificación válida y una modificación con datos no válidos.
 - No se incluye información mecánica ni GPS.
 
 ---
@@ -82,14 +87,16 @@ Proporcionar al personal de AutoRent las funciones mínimas necesarias para mant
 
 #### Acceptance criteria
 
-- **US-020-AC-01:** El personal puede cambiar el estado manual del vehículo.
+- **US-020-AC-01:** El personal puede cambiar el estado manual del vehículo entre disponible y no disponible.
 - **US-020-AC-02:** Un vehículo marcado como no disponible no aparece como reservable.
 - **US-020-AC-03:** Un vehículo puede volver a marcarse como disponible.
-- **US-020-AC-04:** El nuevo estado queda almacenado correctamente.
+- **US-020-AC-04:** El nuevo estado queda almacenado y se refleja en las consultas posteriores.
 
 #### Verification and constraints
 
 - El estado manual debe tenerse en cuenta junto con las reservas existentes.
+- Se verificará mediante pruebas funcionales deterministas el cambio de disponible a no disponible y el cambio inverso.
+- Después del cambio se comprobará que las búsquedas y consultas utilizan el nuevo estado.
 - No implica modificar físicamente el vehículo.
 - No existe integración con sistemas externos de flota.
 
@@ -111,10 +118,14 @@ Proporcionar al personal de AutoRent las funciones mínimas necesarias para mant
 - **US-021-AC-02:** Cada vehículo muestra su identificador, marca, modelo, categoría, número de plazas, capacidad de maletero o carga y tipo de transmisión.
 - **US-021-AC-03:** Se muestra el estado operativo actual de cada vehículo.
 - **US-021-AC-04:** La información mostrada coincide con los datos almacenados.
+- **US-021-AC-05:** La consulta ofrece una respuesta observable en la interfaz en menos de 2 segundos en el entorno local de pruebas.
 
 #### Verification and constraints
 
 - La información mostrada sigue el modelo mínimo de datos sintéticos definido en `specs/product/goals.md`.
 - La consulta está orientada al personal de AutoRent.
 - Solo se utilizarán datos ficticios.
+- El tiempo de respuesta inferior a 2 segundos se comprobará en el entorno local de pruebas.
+- La verificación se realizará mediante pruebas funcionales deterministas utilizando datos sintéticos.
+- No se requieren pruebas de carga o estrés propias de un entorno de producción.
 - No se incluye información GPS, mecánica ni procedente de sistemas externos.

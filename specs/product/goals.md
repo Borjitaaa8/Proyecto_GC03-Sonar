@@ -91,6 +91,15 @@ El proyecto debe respetar las siguientes condiciones:
 - Uso exclusivo de las tecnologías y convenciones aprobadas en el curso.
 - El desarrollo deberá ajustarse al tiempo y capacidad disponible del equipo.
 
+## Criterios transversales de verificación
+
+Para las historias relacionadas con la consulta de información y la confirmación de reservas se aplicarán los siguientes criterios durante la validación del MVP:
+
+- Las operaciones de consulta y confirmación deberán ofrecer una respuesta observable en la interfaz en menos de 2 segundos en el entorno local de pruebas del proyecto.
+- La verificación se realizará mediante pruebas funcionales deterministas utilizando datos sintéticos.
+- No se requieren pruebas de carga, estrés o rendimiento propias de un entorno de producción industrial.
+- Los mensajes mostrados al usuario deberán permitir identificar de forma clara el resultado de la operación o el motivo por el que no puede completarse.
+
 ## Trazabilidad
 
 La cadena de trazabilidad será:

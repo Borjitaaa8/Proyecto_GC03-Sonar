@@ -17,7 +17,7 @@ Permitir que el cliente pueda consultar y gestionar de forma básica una reserva
 
 ### US-014 — Consultar una reserva mediante su referencia
 
-> Como cliente, quiero introducir la referencia de mi reserva para poder consultarla posteriormente.
+> *Como cliente, quiero introducir la referencia de mi reserva para poder consultarla posteriormente.*
 
 - **Priority:** Must
 - **Estimate:** 4 h-p
@@ -29,21 +29,23 @@ Permitir que el cliente pueda consultar y gestionar de forma básica una reserva
 
 - **US-014-AC-01:** El usuario puede introducir una referencia de reserva.
 - **US-014-AC-02:** Si la referencia existe, el sistema recupera la reserva correspondiente.
-- **US-014-AC-03:** Si la referencia no existe, se muestra un mensaje claro.
+- **US-014-AC-03:** Si la referencia no existe, se muestra un mensaje indicando que no se ha encontrado ninguna reserva asociada.
 - **US-014-AC-04:** La consulta no modifica los datos almacenados.
+- **US-014-AC-05:** La consulta ofrece una respuesta observable en la interfaz en menos de 2 segundos en el entorno local de pruebas.
 
 #### Verification and constraints
 
 - Cada referencia debe identificar una única reserva.
 - Las reservas y referencias utilizadas serán ficticias.
-- Los errores deben comunicarse de forma comprensible.
-- La consulta debe ser sencilla.
+- El tiempo de respuesta inferior a 2 segundos se comprobará en el entorno local de pruebas del proyecto.
+- Se comprobarán mediante pruebas funcionales deterministas tanto una referencia existente como una inexistente.
+- No se requieren pruebas de carga o estrés propias de un entorno de producción.
 
 ---
 
 ### US-015 — Visualizar los datos de una reserva
 
-> Como cliente, quiero visualizar el vehículo, las fechas y el estado de mi reserva para comprobar su información.
+> *Como cliente, quiero visualizar el vehículo, las fechas y el estado de mi reserva para comprobar su información.*
 
 - **Priority:** Should
 - **Estimate:** 4 h-p
@@ -57,18 +59,22 @@ Permitir que el cliente pueda consultar y gestionar de forma básica una reserva
 - **US-015-AC-02:** Se muestran las fechas de inicio y fin.
 - **US-015-AC-03:** Se muestra el estado actual de la reserva.
 - **US-015-AC-04:** La información corresponde a la referencia consultada.
+- **US-015-AC-05:** Cada dato mostrado aparece identificado de forma que el usuario puede distinguir el vehículo, las fechas y el estado de la reserva.
+- **US-015-AC-06:** La visualización ofrece una respuesta observable en la interfaz en menos de 2 segundos en el entorno local de pruebas.
 
 #### Verification and constraints
 
 - Solo se mostrará información perteneciente a la reserva localizada.
-- La presentación debe ser clara y comprensible.
 - No se mostrarán datos sensibles reales.
+- El tiempo de respuesta inferior a 2 segundos se comprobará en el entorno local de pruebas del proyecto.
+- La verificación se realizará mediante pruebas funcionales deterministas utilizando reservas y datos sintéticos.
+- No se requieren pruebas de carga o estrés propias de un entorno de producción.
 
 ---
 
 ### US-016 — Cancelar una reserva
 
-> Como cliente, quiero cancelar una reserva existente para liberar el vehículo cuando ya no vaya a necesitarlo.
+> *Como cliente, quiero cancelar una reserva existente para liberar el vehículo cuando ya no vaya a necesitarlo.*
 
 - **Priority:** Should
 - **Estimate:** 5 h-p
@@ -81,19 +87,22 @@ Permitir que el cliente pueda consultar y gestionar de forma básica una reserva
 - **US-016-AC-01:** El usuario puede solicitar la cancelación de una reserva localizada.
 - **US-016-AC-02:** Una reserva cancelada deja de considerarse activa.
 - **US-016-AC-03:** Las fechas correspondientes vuelven a quedar disponibles si no existe otro conflicto.
-- **US-016-AC-04:** El sistema informa de que la cancelación se ha realizado correctamente.
+- **US-016-AC-04:** Si la cancelación finaliza correctamente, el sistema muestra un mensaje indicando que la reserva ha sido cancelada.
+- **US-016-AC-05:** Si la reserva ya no puede cancelarse porque no existe o no está activa, el sistema informa de que la operación no puede realizarse y no modifica la disponibilidad.
 
 #### Verification and constraints
 
 - La cancelación no implica reembolsos ni operaciones de pago.
-- Solo podrán cancelarse reservas existentes.
+- Solo podrán cancelarse reservas existentes y activas.
 - La actualización debe mantener coherente la disponibilidad del vehículo.
+- Se verificarán mediante pruebas funcionales deterministas los casos de cancelación correcta y de reserva no cancelable utilizando datos sintéticos.
+- Los mensajes deberán permitir identificar si la cancelación se ha realizado o por qué no ha podido completarse.
 
 ---
 
 ### US-017 — Consultar las reservas activas
 
-> Como personal de AutoRent, quiero consultar las reservas activas para conocer qué vehículos están comprometidos y durante qué fechas.
+> *Como personal de AutoRent, quiero consultar las reservas activas para conocer qué vehículos están comprometidos y durante qué fechas.*
 
 - **Priority:** Must
 - **Estimate:** 5 h-p
