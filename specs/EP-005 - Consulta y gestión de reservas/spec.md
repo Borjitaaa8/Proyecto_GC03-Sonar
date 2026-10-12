@@ -7,7 +7,9 @@
 
 Esta épica incluye la consulta de una reserva mediante su referencia, la visualización de sus datos, la posibilidad de cancelarla y la consulta de las reservas activas por parte del personal de AutoRent.
 
-Quedan fuera los reembolsos, pagos, modificaciones contractuales y cualquier gestión relacionada con aseguradoras.
+En el MVP, la referencia única de la reserva actúa como mecanismo funcional para que el cliente consulte y cancele una reserva individual. Las funciones destinadas al personal de AutoRent se presentan mediante una vista administrativa diferenciada dentro del prototipo.
+
+Quedan fuera los reembolsos, pagos, modificaciones contractuales, cualquier gestión relacionada con aseguradoras y la implementación de sistemas complejos o externos de autenticación y gestión de identidades.
 
 ## Epic outcome
 
@@ -28,7 +30,7 @@ Permitir que el cliente pueda consultar y gestionar de forma básica una reserva
 #### Acceptance criteria
 
 - **US-014-AC-01:** El usuario puede introducir una referencia de reserva.
-- **US-014-AC-02:** Si la referencia existe, el sistema recupera la reserva correspondiente.
+- **US-014-AC-02:** Si la referencia existe, el sistema recupera únicamente la reserva asociada a esa referencia.
 - **US-014-AC-03:** Si la referencia no existe, se muestra un mensaje indicando que no se ha encontrado ninguna reserva asociada.
 - **US-014-AC-04:** La consulta no modifica los datos almacenados.
 - **US-014-AC-05:** La consulta ofrece una respuesta observable en la interfaz en menos de 2 segundos en el entorno local de pruebas.
@@ -36,6 +38,8 @@ Permitir que el cliente pueda consultar y gestionar de forma básica una reserva
 #### Verification and constraints
 
 - Cada referencia debe identificar una única reserva.
+- En el MVP, disponer de la referencia válida permite consultar esa reserva individual.
+- No se implementará autenticación adicional del cliente ni integración con sistemas externos de identidad.
 - Las reservas y referencias utilizadas serán ficticias.
 - El tiempo de respuesta inferior a 2 segundos se comprobará en el entorno local de pruebas del proyecto.
 - Se comprobarán mediante pruebas funcionales deterministas tanto una referencia existente como una inexistente.
@@ -58,13 +62,14 @@ Permitir que el cliente pueda consultar y gestionar de forma básica una reserva
 - **US-015-AC-01:** Se muestra el vehículo asociado a la reserva.
 - **US-015-AC-02:** Se muestran las fechas de inicio y fin.
 - **US-015-AC-03:** Se muestra el estado actual de la reserva.
-- **US-015-AC-04:** La información corresponde a la referencia consultada.
+- **US-015-AC-04:** La información corresponde exclusivamente a la referencia consultada.
 - **US-015-AC-05:** Cada dato mostrado aparece identificado de forma que el usuario puede distinguir el vehículo, las fechas y el estado de la reserva.
 - **US-015-AC-06:** La visualización ofrece una respuesta observable en la interfaz en menos de 2 segundos en el entorno local de pruebas.
 
 #### Verification and constraints
 
-- Solo se mostrará información perteneciente a la reserva localizada.
+- Solo se mostrará información perteneciente a la reserva localizada mediante la referencia introducida.
+- No se mostrarán datos de otras reservas.
 - No se mostrarán datos sensibles reales.
 - El tiempo de respuesta inferior a 2 segundos se comprobará en el entorno local de pruebas del proyecto.
 - La verificación se realizará mediante pruebas funcionales deterministas utilizando reservas y datos sintéticos.
@@ -84,7 +89,7 @@ Permitir que el cliente pueda consultar y gestionar de forma básica una reserva
 
 #### Acceptance criteria
 
-- **US-016-AC-01:** El usuario puede solicitar la cancelación de una reserva localizada.
+- **US-016-AC-01:** El usuario puede solicitar la cancelación de la reserva localizada mediante una referencia válida.
 - **US-016-AC-02:** Una reserva cancelada deja de considerarse activa.
 - **US-016-AC-03:** Las fechas correspondientes vuelven a quedar disponibles si no existe otro conflicto.
 - **US-016-AC-04:** Si la cancelación finaliza correctamente, el sistema muestra un mensaje indicando que la reserva ha sido cancelada.
@@ -92,6 +97,8 @@ Permitir que el cliente pueda consultar y gestionar de forma básica una reserva
 
 #### Verification and constraints
 
+- En el MVP, disponer de la referencia válida permite solicitar la cancelación de esa reserva individual.
+- No se implementará una comprobación adicional de identidad del cliente.
 - La cancelación no implica reembolsos ni operaciones de pago.
 - Solo podrán cancelarse reservas existentes y activas.
 - La actualización debe mantener coherente la disponibilidad del vehículo.
@@ -112,13 +119,16 @@ Permitir que el cliente pueda consultar y gestionar de forma básica una reserva
 
 #### Acceptance criteria
 
-- **US-017-AC-01:** El personal puede consultar una lista de reservas activas.
+- **US-017-AC-01:** El personal puede acceder desde la vista administrativa del prototipo a una lista de reservas activas.
 - **US-017-AC-02:** Cada reserva muestra al menos el vehículo y las fechas asociadas.
 - **US-017-AC-03:** Las reservas canceladas no se consideran activas.
 - **US-017-AC-04:** La información coincide con las reservas almacenadas.
+- **US-017-AC-05:** La vista administrativa está diferenciada de las funciones destinadas al cliente.
 
 #### Verification and constraints
 
-- La consulta está orientada al personal de AutoRent.
+- La consulta está orientada exclusivamente a las funciones simuladas del personal de AutoRent.
+- En el MVP no se implementará un sistema complejo o externo de autenticación y gestión de identidades para diferenciar al personal.
+- La separación entre cliente y personal se representará mediante vistas o accesos funcionales diferenciados dentro del prototipo.
 - Se utilizarán únicamente datos ficticios.
 - No incluye facturación, pagos ni información de aseguradoras.
