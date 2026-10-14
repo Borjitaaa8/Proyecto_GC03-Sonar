@@ -6,7 +6,7 @@
 - **Fuentes auditadas:** `docs/planning/CityDrive_Semana3_FINAL.xlsx`, `docs/planning/README.md`, `specs/product/goals.md`, y ausencia de artefactos nativos de ProjectLibre en `docs/planning/`.
 - **Alcance:** revisión de la planificación semestral de Semana 3, alineación con objetivos del producto y viabilidad de capacidad, costes y cronograma.
 
----
+----
 
 ## 1. Resumen ejecutivo
 
