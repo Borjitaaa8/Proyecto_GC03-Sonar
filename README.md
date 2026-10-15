@@ -1,12 +1,20 @@
-# Gestion de Practicas - Proyecto GPS (Practica 1)
+# Proyecto GPS (Practica 1)
 
 ## Empresa y Producto
-* Empresa: MoveTech Solutions | Producto: CityDrive
+* Empresa de desarrollo: MoveTech Solutions
+* Producto: CityDrive (Aplicacion web orientada a la consulta y reserva de vehiculos para AutoRent).
 
-## Planificacion y Costes del Proyecto
-* Planificacion temporal: Estructurada en Sprints (iteraciones de una semana) y organizada mediante ficheros de ProjectLibre ordenados por Sprints y por Epicas.
-* Estimacion economica: Calculo de costes de personal en funcion de la capacidad efectiva del equipo de 5 integrantes y sus tarifas asignadas.
-* Auditoria: Informes de revision y validacion generados por los agentes especializados de inteligencia artificial.
+## Revision y Consolidacion de Requisitos
+* Se configuro e integro el agente de requisitos (Requirements Agent) para revisar el catalogo completo (EP-001 a EP-006).
+* Se trataron los hallazgos identificados, documentando las decisiones humanas correspondientes (modelo de datos, concurrencia, verificaciones y límites de acceso) hasta obtener un estado sin hallazgos bloqueantes.
 
-## Enlaces de Interes
+## Planificacion Temporal y Costes
+* Planificacion consolidada en el fichero de Excel de la Semana 3, abarcando 21 Historias de Usuario distribuidas en 6 iteraciones semanales y 3 releases.
+* Esfuerzo total estimado de 102 horas-persona frente a una capacidad efectiva total del equipo de 132 horas (dejando un margen operativo de 30 horas).
+* Calculo provisional de costes de personal basado en una tarifa académica de referencia de 25 euros por hora.
+
+## Auditoria de Planificacion
+* Utilizacion del agente de planificacion (Planning Agent) para verificar la coherencia de cargas, asignaciones de responsables, dependencias y ausencia de sobreasignaciones, respaldado por la revision humana del equipo.
+
+## Enlace
 * [Wiki del Repositorio](https://github.com/UniExtremadura/Proyecto_GC03/wiki)
