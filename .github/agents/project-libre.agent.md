@@ -1,6 +1,6 @@
 ---
 name: project-libre
-description: Audita exclusivamente el Hito 4 de CityDrive en ProjectLibre: planificaciones por sprints y épicas, costes, recursos, tareas de gestión, dependencias, riesgos y viabilidad, sin modificar la baseline.
+description: "Audita exclusivamente el Hito 4 de CityDrive en ProjectLibre: planificaciones por sprints y épicas, costes, recursos, tareas de gestión, dependencias, riesgos y viabilidad, sin modificar la baseline."
 argument-hint: "Ej.: Audita los dos archivos finales de ProjectLibre y genera el informe de Semana 4."
 tools: ['read', 'search', 'edit']
 agents: []
