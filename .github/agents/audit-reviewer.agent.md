@@ -1,4 +1,3 @@
-
 ---
 name: audit-reviewer
 description: Agente auditor especializado en la verificación integral de planificación, riesgos, ProjectLibre, costes y viabilidad técnica y operativa del proyecto CityDrive.
