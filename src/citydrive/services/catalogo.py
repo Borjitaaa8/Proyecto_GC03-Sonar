@@ -31,3 +31,21 @@ class CatalogoVehiculos:
 
     def obtener_vehiculos(self) -> list[Vehiculo]:
         return list(self._vehiculos.values())
+
+    def cambiar_estado_vehiculo(
+        self,
+        vehiculo_id: str,
+        nuevo_estado: str,
+    ) -> Vehiculo:
+        if vehiculo_id not in self._vehiculos:
+            raise ValueError("No existe ningún vehículo con ese identificador.")
+
+        if nuevo_estado not in ("disponible", "no disponible"):
+            raise ValueError(
+                "El estado debe ser 'disponible' o 'no disponible'."
+            )
+
+        vehiculo = self._vehiculos[vehiculo_id]
+        vehiculo.estado_operativo = nuevo_estado
+
+        return vehiculo
