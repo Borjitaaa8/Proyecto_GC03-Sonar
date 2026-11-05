@@ -1,5 +1,6 @@
 from dataclasses import dataclass
 from datetime import date
+from threading import Lock
 
 
 @dataclass
@@ -8,6 +9,9 @@ class Reserva:
     fecha_inicio: date
     fecha_fin: date
     estado: str = "activa"
+
+
+_bloqueo_reservas = Lock()
 
 
 def fechas_se_solapan(
@@ -47,3 +51,31 @@ def vehiculo_disponible(
             return False
 
     return True
+
+
+def registrar_reserva_si_disponible(
+    vehiculo_id: str,
+    fecha_inicio: date,
+    fecha_fin: date,
+    reservas: list[Reserva],
+) -> Reserva:
+    with _bloqueo_reservas:
+        if not vehiculo_disponible(
+            vehiculo_id,
+            fecha_inicio,
+            fecha_fin,
+            reservas,
+        ):
+            raise ValueError(
+                "El vehículo ya no está disponible para las fechas indicadas."
+            )
+
+        reserva = Reserva(
+            vehiculo_id=vehiculo_id,
+            fecha_inicio=fecha_inicio,
+            fecha_fin=fecha_fin,
+        )
+
+        reservas.append(reserva)
+
+        return reserva
