@@ -1,5 +1,7 @@
 
-from src.services.filtro_vehiculo_service import filtrar_por_tipo
+from src.services.filtro_vehiculo_service import (
+    filtrar_vehiculos_por_tipo as filtrar_por_tipo
+)
 
 
 def mostrar_filtro(tipo="TODOS"):
@@ -8,7 +10,11 @@ def mostrar_filtro(tipo="TODOS"):
     if tipo not in ("COCHE", "FURGONETA", "TODOS"):
         return "Tipo de vehículo no válido."
 
-    vehiculos = filtrar_por_tipo(tipo)
+    if tipo == "TODOS":
+        vehiculos = filtrar_por_tipo(None)
+    else:
+        vehiculos = filtrar_por_tipo(tipo)
+
     vehiculos = [v for v in vehiculos if v["disponible"]]
 
     if not vehiculos:
