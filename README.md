@@ -1,20 +1,92 @@
-# Proyecto GPS (Practica 1)
+# Proyecto GPS - CityDrive
 
-## Empresa y Producto
-* Empresa de desarrollo: MoveTech Solutions
-* Producto: CityDrive (Aplicacion web orientada a la consulta y reserva de vehiculos para AutoRent).
+## Empresa y producto
 
-## Revision y Consolidacion de Requisitos
-* Se configuro e integro el agente de requisitos (Requirements Agent) para revisar el catalogo completo (EP-001 a EP-006).
-* Se trataron los hallazgos identificados, documentando las decisiones humanas correspondientes (modelo de datos, concurrencia, verificaciones y límites de acceso) hasta obtener un estado sin hallazgos bloqueantes.
+- Empresa de desarrollo: MoveTech Solutions.
+- Cliente: AutoRent.
+- Producto: CityDrive, aplicación orientada a la consulta, reserva y gestión de vehículos.
 
-## Planificacion Temporal y Costes
-* Planificacion consolidada en el fichero de Excel de la Semana 3, abarcando 21 Historias de Usuario distribuidas en 6 iteraciones semanales y 3 releases.
-* Esfuerzo total estimado de 102 horas-persona frente a una capacidad efectiva total del equipo de 132 horas (dejando un margen operativo de 30 horas).
-* Calculo provisional de costes de personal basado en una tarifa académica de referencia de 25 euros por hora.
+## Gestión del proyecto
 
-## Auditoria de Planificacion
-* Utilizacion del agente de planificacion (Planning Agent) para verificar la coherencia de cargas, asignaciones de responsables, dependencias y ausencia de sobreasignaciones, respaldado por la revision humana del equipo.
+El proyecto se ha gestionado mediante Jira y GitHub siguiendo una estrategia de trabajo basada en GitFlow.
+
+Se han utilizado las ramas principales:
+
+- `main`: versión estable e integrada del proyecto.
+- `develop`: rama de integración del desarrollo.
+- `feature/*`: ramas independientes para el desarrollo de las Historias de Usuario.
+
+Las tareas y subtareas se han gestionado en Jira y los commits asociados al trabajo se han vinculado mediante Smart Commits.
+
+## Alcance funcional
+
+El proyecto está organizado en seis épicas:
+
+- EP-001 - Búsqueda de vehículos.
+- EP-002 - Filtrado y consulta de vehículos.
+- EP-003 - Creación de reservas.
+- EP-004 - Control de disponibilidad y conflictos.
+- EP-005 - Consulta y gestión de reservas.
+- EP-006 - Gestión del catálogo de vehículos.
+
+Las Historias de Usuario implementadas se encuentran integradas en `develop` y posteriormente en `main`.
+
+## Pruebas
+
+El proyecto dispone de pruebas automatizadas para validar las distintas funcionalidades implementadas.
+
+La ejecución completa actual mediante:
+
+```bash
+python -m pytest -v
+```
+
+finaliza correctamente con:
+
+- 160 pruebas superadas.
+- 5 subtests superados.
+
+## Integración continua
+
+Se ha configurado integración continua mediante GitHub Actions.
+
+El workflow se encuentra en:
+
+```text
+.github/workflows/ci.yml
+```
+
+El CI se ejecuta automáticamente sobre las ramas `develop` y `main`, así como en Pull Requests dirigidas a estas ramas.
+
+El workflow:
+
+1. Obtiene el código del repositorio.
+2. Configura Python 3.14.
+3. Instala `pytest`.
+4. Ejecuta automáticamente la suite completa de pruebas.
+
+Las ejecuciones finales del CI en `develop` y `main` se completan correctamente.
+
+## Documentación
+
+La documentación del proyecto se encuentra principalmente en:
+
+- `docs/planning`: planificación temporal y de iteraciones.
+- `docs/quality`: Definition of Ready, Definition of Done y evidencias de pruebas.
+- `docs/reviews`: revisiones y auditorías realizadas durante el proyecto.
+- `docs/revisiones`: revisiones específicas de funcionalidades.
+
+## Estado final
+
+El proyecto dispone de:
+
+- Historias de Usuario integradas.
+- Seis épicas finalizadas.
+- Integración completa en `develop`.
+- Versión final integrada en `main`.
+- Suite de pruebas automatizadas superada.
+- Integración continua operativa mediante GitHub Actions.
 
 ## Enlace
-* [Wiki del Repositorio](https://github.com/UniExtremadura/Proyecto_GC03/wiki)
+
+- [Wiki del repositorio](https://github.com/UniExtremadura/Proyecto_GC03/wiki)
